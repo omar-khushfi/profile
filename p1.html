@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دوائر متحركة حسب الماوس</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #161616ed; /* خلفية داكنة */
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .circle {
+            width: 800px; /* قطر الدائرة الرئيسية */
+            height: 800px; /* قطر الدائرة الرئيسية */
+            border-radius: 50%;
+            border: 5px solid #f1c40f; /* لون حدود الدائرة */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .small-circle {
+            width: 70px; /* قطر الدائرة الصغيرة */
+            height: 70px; /* قطر الدائرة الصغيرة */
+            border-radius: 50%;
+            background-color: #e74c3c; /* لون الدائرة الصغيرة */
+            position: absolute;
+            transition: left 0.5s, top 0.5s; /* حركة أبطأ */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="circle" id="mainCircle">
+            <div class="small-circle" id="circle1">sql</div>
+            <div class="small-circle" id="circle2">django</div>
+            <div class="small-circle" id="circle3">c++</div>
+            <div class="small-circle" id="circle3">c++</div>
+            <div class="small-circle" id="circle3">c++</div>
+            
+            <div class="small-circle" id="circle4"></div>
+            <div class="small-circle" id="circle5"></div>
+        </div>
+    </div>
+    <script>
+        const smallCircles = document.querySelectorAll('.small-circle');
+        const mainCircle = document.getElementById('mainCircle');
+
+        // وضع الدوائر الأولية عند تحميل الصفحة
+        function positionCircles() {
+            const rect = mainCircle.getBoundingClientRect();
+            const centerX = rect.width / 2; // مركز الدائرة الرئيسية
+            const centerY = rect.height / 2; // مركز الدائرة الرئيسية
+
+            smallCircles.forEach((circle, index) => {
+                let angle = Math.random() * 2 * Math.PI; // زاوية عشوائية
+                let radius = Math.random() * (rect.width / 2 - circle.clientWidth / 2); // نصف قطر عشوائي
+
+                // حساب موضع الدائرة الصغيرة
+                let circleX = centerX + radius * Math.cos(angle) - circle.clientWidth / 2;
+                let circleY = centerY + radius * Math.sin(angle) - circle.clientHeight / 2;
+
+                // منع التداخل مع الدوائر الأخرى
+                for (let j = 0; j < index; j++) {
+                    const otherCircle = smallCircles[j];
+                    const otherX = parseFloat(otherCircle.style.left) || 0;
+                    const otherY = parseFloat(otherCircle.style.top) || 0;
+
+                    const distance = Math.sqrt(Math.pow(circleX - otherX, 2) + Math.pow(circleY - otherY, 2));
+                    const minDistance = circle.clientWidth + otherCircle.clientWidth;
+
+                    if (distance < minDistance) {
+                        // إذا كانت الدوائر متداخلة، عدل موقع الدائرة
+                        circleX += (minDistance - distance) * (circleX - otherX) / distance;
+                        circleY += (minDistance - distance) * (circleY - otherY) / distance;
+                    }
+                }
+
+                circle.style.left = `${circleX}px`;
+                circle.style.top = `${circleY}px`;
+            });
+        }
+
+        mainCircle.addEventListener('mousemove', (event) => {
+            const rect = mainCircle.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left; // موضع الماوس بالنسبة للدائرة
+            const mouseY = event.clientY - rect.top; // موضع الماوس بالنسبة للدائرة
+
+            smallCircles.forEach(circle => {
+                const circleX = parseFloat(circle.style.left) + circle.clientWidth / 2;
+                const circleY = parseFloat(circle.style.top) + circle.clientHeight / 2;
+
+                const distance = Math.sqrt(Math.pow(mouseX - circleX, 2) + Math.pow(mouseY - circleY, 2));
+                if (distance < 100) { // إذا كانت قريبة من الماوس
+                    const angle = Math.random() * 2 * Math.PI; // زاوية عشوائية
+                    const radius = Math.random() * (rect.width / 2 - circle.clientWidth / 2); // نصف قطر عشوائي
+
+                    // حساب موضع الدائرة الصغيرة
+                    const newCircleX = (rect.width / 2) + radius * Math.cos(angle) - circle.clientWidth / 2;
+                    const newCircleY = (rect.height / 2) + radius * Math.sin(angle) - circle.clientHeight / 2;
+
+                    // منع التداخل مع الدوائر الأخرى
+                    let overlapping = false;
+                    smallCircles.forEach(otherCircle => {
+                        if (otherCircle !== circle) {
+                            const otherX = parseFloat(otherCircle.style.left) || 0;
+                            const otherY = parseFloat(otherCircle.style.top) || 0;
+                            const minDistance = circle.clientWidth + otherCircle.clientWidth;
+                            const distance = Math.sqrt(Math.pow(newCircleX - otherX, 2) + Math.pow(newCircleY - otherY, 2));
+                            if (distance < minDistance) {
+                                overlapping = true;
+                            }
+                        }
+                    });
+
+                    // إذا كانت ليست متداخلة، قم بتحريك الدائرة
+                    if (!overlapping) {
+                        circle.style.left = `${newCircleX}px`;
+                        circle.style.top = `${newCircleY}px`;
+                    }
+                }
+            });
+        });
+
+        // وضع الدوائر الأولية عند تحميل الصفحة
+        positionCircles();
+    </script>
+</body>
+</html>
+

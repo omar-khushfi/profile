@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional Django backend developer with Meta Coursera certificates."
+    />
+    <title>My Personal Website - Django Backend Developer</title>
+    <!-- Bootstrap CSS -->
+    <link href="css.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #1a1a1a;
+        color: #00ffffba;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .navbar {
+        background-color: #111;
+      }
+
+      .navbar-brand,
+      .nav-link {
+        color: #00ffffba !important;
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        background-color: #0d0d0d;
+        color: #fff;
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .hero {
+          flex-direction: row;
+          text-align: left;
+          padding: 100px 40px;
+        }
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+        animation: fadeIn 2s;
+      }
+
+      @media (min-width: 768px) {
+        .hero-text h1 {
+          font-size: 3.5rem;
+        }
+      }
+
+      .hero-text p {
+        font-size: 1.125rem;
+        margin-top: 20px;
+        animation: fadeIn 3s;
+      }
+
+      .hero img {
+        width: 200px;
+        max-width: 100%;
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        animation: slideIn 2s;
+        margin-bottom: 30px;
+      }
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
+
+     
+      @media (min-width: 768px) {
+        .hero img {
+          width: 300px;
+          margin-bottom: 0;
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .section-title {
+        text-align: center;
+        margin: 50px 0 30px;
+        font-size: 2.5rem;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 15px#00a7a7;
+      }
+
+      .project-card {
+        background-color: #262626;
+        border: none;
+        margin-bottom: 30px;
+        color: #fff;
+        transition: transform 0.3s ease-in-out,
+          background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        background-color: #333;
+        color: #00ffffba;
+        box-shadow: 0 4px 15px#00a7a7;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #0d0d0d;
+        color: #00ffffba;
+      }
+
+      .footer-links a {
+        color: #00ffffba;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      .footer-links a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      .btn-custom {
+        background-color: #00ffffba;
+        color: #000;
+        transition: background-color 0.3s ease;
+        margin-bottom: 50px;
+      }
+
+      .btn-custom:hover {
+        background-color: #00a7a7;
+        color: #fff;
+      }
+      .card-body {
+        padding: 10%;
+    padding-right: 15%;
+    padding-left: 15%;
+      }
+
+      /* Style for the certificates section */
+      .certificate-card {
+        background-color: #1e1e1e;
+        color: #fff;
+        border: none;
+        margin-bottom: 30px;
+        text-align: center;
+        padding: 20px;
+        transition: transform 0.3s ease-in-out,
+          background-color 0.3s ease-in-out;
+      }
+
+      .certificate-card:hover {
+        transform: translateY(-10px);
+        background-color: #333;
+        box-shadow: 0 4px 15px#00a7a7;
+      }
+
+      .certificate-card img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 15px;
+      }
+
+      .carousel-indicators li {
+        width: 50px;
+        height: 8px;
+        margin: 0 5px;
+        background-color: #50000000 !important;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        border-radius: 4px;
+        position: relative;
+        font-size: larger !important;
+      }
+
+      .carousel-indicators .active {
+        background-color: #00ffffba;
+        color: #00ffffba !important ;
+        transform: scale(1.1);
+      }
+
+      .carousel-indicators li:hover {
+        background-color: #00a7a7;
+        cursor: pointer;
+      }
+
+      .carousel-indicators li::marker {
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        color: #00ffffba !important ;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 576px) {
+        .section-title {
+          font-size: 2rem;
+          margin: 30px 0 20px;
+        }
+
+        .btn-custom {
+          width: 100%;
+        }
+      }
+
+      .circle {
+    width: 70vw; 
+    height: 70vw;
+    max-width: 700px; 
+    max-height: 700px;
+    border-radius: 50%;
+    border: 2px solid #00b4b4;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto; 
+  }
+
+  .small-circle {
+    width: 10vw;
+    height: 10vw;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 50%;
+    background-color: #333;
+    position: absolute;
+    color: #00ffff;
+    transition: left 0.5s, top 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1vw;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .container-circle {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 29px;
+    margin-bottom: 70px;
+  }
+
+ 
+  @media (max-width: 768px) {
+    .circle {
+      width: 90vw; 
+      height: 90vw; 
+    }
+
+    .small-circle {
+        width: 10vw;
+        height: 10vw;
+        font-size: 1.5vw;
+        font-weight: bold;
+    }
+  }
+
+</style>
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand">omar khushfi</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#certificates">Certificates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Skills</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Hi, I'm a Backend Developer</h1>
+        <p>
+          I am a student in the College of Applied Computer Technology. I am a back-end developer using Django and Django Rest Framework.
+        </p>
+       
+      </div>
+      <!-- Image placeholder -->
+      <img
+        src="omar.png"
+        alt="Personal Image"
+        style="width: 400px; height: 400px"
+      />
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+      <h2 class="section-title">About Me</h2>
+      <p>
+        I am a professional backend developer with Meta Coursera certificates in
+        Django and Django REST. I have participated in many software
+        competitions and have a Codeforces account. I have worked on numerous
+        projects and currently work as a freelancer.
+      </p>
+      <!-- Button to download CV -->
+      <a
+        href="path/to/your/cv.pdf"
+        class="btn btn-custom mt-3"
+        download="YourName_CV.pdf"
+        >Download My CV</a
+      >
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+      <h2 class="section-title">Projects</h2>
+      <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <ol class="carousel-indicators">
+            <li
+              data-bs-target="#projectCarousel"
+              data-bs-slide-to="0"
+              class="active"
+            ></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="2"></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="3"></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="4"></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="5"></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="6"></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="7"></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="8"></li>
+            <li data-bs-target="#projectCarousel" data-bs-slide-to="9"></li>
+            
+          </ol>
+          <!--project 1-->
+          <div class="carousel-item active">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">1. Calculate product price</h2>
+                <p class="card-text">
+                  This site enters the raw materials for manufacturing products and their price, then enters the products and enters the quantity of each raw material for this product, and then calculates the initial cost of the product. Any modification in the prices is sufficient to modify the price of the raw material to calculate the price of the new product automatically.
+                </p>
+                <a href="https://github.com/omar-khushfi/-2-Calculate_product_price-" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+          <!--project 2-->
+          <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">2. Store</h2>
+                <p class="card-text">
+                  A store that includes creating an account for the user. The user browses and places purchases in his cart. He can modify and then pay. He can add and modify products.
+                </p>
+                <a href="#" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+          <!--project 3-->
+          <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">3. Exam English words</h2>
+                <p class="card-text">
+                  The site helps to memorize English vocabulary, where the word is entered with its translation into Arabic,
+                  and the site asks random questions from the words that the user has memorized, shows options, and
+                  keeps the words that the user answered incorrectly, and shows them in a sidebar.
+                </p>
+                <a href="#" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+          <!--project 4-->
+          <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">4. Questions and Exams</h2>
+                <p class="card-text">
+                  On this site there are two types of users: students and teachers. Each teacher can create a set of questions and the student can search for them, enter them, and conduct an exam at a specific time. The sets of questions appear on the teacher’s page and the results of previous exams appear on the student’s page.
+
+
+                </p>
+                <a href="#" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+          <!--project 5-->
+          <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">5. Manage Projects</h2>
+                <p class="card-text">
+                  This site allows you to create accounts and log in. It manages rooms, where each room has tasks that can be added or its status modified without updating the page. Each room has a real-time conversation.
+                </p>
+                <a href="#" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+          <!--project 6-->
+          <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">6. tic tac toe</h2>
+                <p class="card-text">
+                  This site is for the XO game and allows the user to create accounts and log in, where each user can
+                  create a private room and give the room name to his friend, and his friend searches for the room and
+                  enters it, and when the number of people in the room reaches 2, no additional person is allowed to enter,
+                </p>
+                <a href="https://github.com/omar-khushfi/-4-tic-tac-toe-" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+          <!--project 7-->
+          <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">7. Library management</h2>
+                <p class="card-text">
+                  This site is for managing a library for selling and renting books, where you can add, edit, and delete books,
+                  display available, sold, and rented books, and display profits from rented and sold books.
+                </p>
+                <a href="https://github.com/omar-khushfi/Library-management" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+          <!--project 8-->
+          <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">8. Api for restaurant </h2>
+                <p class="card-text">
+                  This project provides, through Abi, the creation of user accounts with a token that enables you to create meals and the foods that make up the meals. It is also possible to create meals and the foods that make up the meals and customer requests with calculating the price of the request.
+                </p>
+                <a href="#" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+          <!--project 9-->
+          <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">9. Store Api</h2>
+                <p class="card-text">
+                  This site provides API for a store for sale, as it includes creating a user, modifying it, obtaining a token, creating products, modifying them, and displaying them with a filter and Paginator, creating requests, modifying them, and deleting them.
+
+
+                </p>
+                <a href="https://github.com/omar-khushfi/6-store_api" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+
+           <!--project 10-->
+           <div class="carousel-item">
+            <div class="card project-card">
+              <div class="card-body">
+                <h2 class="card-title">10. restaurant </h2>
+                <p class="card-text">
+                  This site reviews restaurant specials and provides a description of each meal.
+
+
+                </p>
+                <a href="https://github.com/omar-khushfi/a-store-django1" class="btn btn-custom"> Go to source code </a>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#projectCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#projectCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="container">
+      <h2 class="section-title">Certificates</h2>
+      <div class="row">
+        <!-- Certificate 1 -->
+
+        <div class="col-md-4">
+          <div class="card certificate-card w-100">
+            <img src="django.png" alt="Certificate Logo" class="w-100" />
+            <h5 class="card-title">Meta Django</h5>
+            <p class="card-text">
+              Certificate from Coursera for completing the Meta Django
+              specialization.
+            </p>
+          </div>
+        </div>
+        <!-- Certificate 2 -->
+        <div class="col-md-4">
+          <div class="card certificate-card w-100">
+            <img src="rest.png" alt="Certificate Logo" class="w-100" />
+            <h5 class="card-title">Meta Django RestFrameWork</h5>
+            <p class="card-text">
+              Certificate from Coursera for completing the Meta APIs
+              specialization.
+            </p>
+          </div>
+        </div>
+        <!-- Certificate 3 -->
+        <div class="col-md-4">
+          <div class="card certificate-card w-100">
+            <img src="full.png" alt="Certificate Logo" class="w-100" />
+            <h5 class="card-title">Meta FullStuck</h5>
+            <p class="card-text">
+              Certificate from Coursera for completing the Meta FullStuck
+              specialization.
+            </p>
+          </div>
+        </div>
+        <!-- Certificate 4 -->
+        <div class="col-md-4">
+          <div class="card certificate-card w-100">
+            <img src="icpc22.png" alt="Certificate Logo" class="w-100" />
+            <h5 class="card-title">Icpc 2022</h5>
+            <p class="card-text">
+              Certificate from Coursera for completing the Meta Django
+              specialization.
+            </p>
+          </div>
+        </div>
+        <!-- Certificate 5 -->
+        <div class="col-md-4">
+          <div class="card certificate-card w-100">
+            <img src="icpc23.png" alt="Certificate Logo" class="w-100" />
+            <h5 class="card-title">Icpc 2023</h5>
+            <p class="card-text">
+              Certificate from Coursera for completing the Meta Django
+              specialization.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skils Section -->
+    <section id="skills">
+        <h2 class="section-title">Skils</h2>
+        <div class="container-circle">
+            <div class="circle" id="mainCircle">
+                <div class="small-circle" id="circle1">Sql</div>
+                <div class="small-circle" id="circle2">Django</div>
+                <div class="small-circle" id="circle3">C#</div>
+                <div class="small-circle" id="circle3">Html</div>
+                <div class="small-circle" id="circle3">Css</div>
+                <div class="small-circle" id="circle4">GitHub</div>
+                <div class="small-circle" id="circle4">Python</div>
+                <div class="small-circle" id="circle4">Linux</div>
+                <div class="small-circle" id="circle4">Problem Solving</div>
+                <div class="small-circle" id="circle4">Rest</div>
+                <div class="small-circle" id="circle4">Js</div>
+               
+            </div>
+        </div>
+      </section>
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 My Personal Website. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/omar-khushfi-364384263/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/omar-khushfi" target="_blank">GitHub</a>
+        <a href="https://codeforces.com/profile/omar-khushfi" target="_blank">Codeforces</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+     const smallCircles = document.querySelectorAll('.small-circle');
+  const mainCircle = document.getElementById('mainCircle');
+
+  
+  function positionCircles() {
+    const rect = mainCircle.getBoundingClientRect();
+    const centerX = rect.width / 2; 
+    const centerY = rect.height / 2; 
+
+    smallCircles.forEach((circle, index) => {
+      let angle = Math.random() * 2 * Math.PI; 
+      let radius = Math.random() * (rect.width / 2 - circle.clientWidth / 2); 
+ 
+      let circleX = centerX + radius * Math.cos(angle) - circle.clientWidth / 2;
+      let circleY = centerY + radius * Math.sin(angle) - circle.clientHeight / 2;
+
+     
+      for (let j = 0; j < index; j++) {
+        const otherCircle = smallCircles[j];
+        const otherX = parseFloat(otherCircle.style.left) || 0;
+        const otherY = parseFloat(otherCircle.style.top) || 0;
+
+        const distance = Math.sqrt(Math.pow(circleX - otherX, 2) + Math.pow(circleY - otherY, 2));
+        const minDistance = circle.clientWidth + otherCircle.clientWidth;
+
+        if (distance < minDistance) {
+        
+          circleX += (minDistance - distance) * (circleX - otherX) / distance;
+          circleY += (minDistance - distance) * (circleY - otherY) / distance;
+        }
+      }
+
+      circle.style.left = `${circleX}px`;
+      circle.style.top = `${circleY}px`;
+    });
+  }
+
+  mainCircle.addEventListener('mousemove', (event) => {
+    const rect = mainCircle.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top; 
+
+    smallCircles.forEach(circle => {
+      const circleX = parseFloat(circle.style.left) + circle.clientWidth / 2;
+      const circleY = parseFloat(circle.style.top) + circle.clientHeight / 2;
+
+      const distance = Math.sqrt(Math.pow(mouseX - circleX, 2) + Math.pow(mouseY - circleY, 2));
+      if (distance < 200) { 
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = Math.random() * (rect.width / 2 - circle.clientWidth / 2); 
+
+    
+        const newCircleX = (rect.width / 2) + radius * Math.cos(angle) - circle.clientWidth / 2;
+        const newCircleY = (rect.height / 2) + radius * Math.sin(angle) - circle.clientHeight / 2;
+
+       
+        let overlapping = false;
+        smallCircles.forEach(otherCircle => {
+          if (otherCircle !== circle) {
+            const otherX = parseFloat(otherCircle.style.left) || 0;
+            const otherY = parseFloat(otherCircle.style.top) || 0;
+            const minDistance = circle.clientWidth + otherCircle.clientWidth;
+            const distance = Math.sqrt(Math.pow(newCircleX - otherX, 2) + Math.pow(newCircleY - otherY, 2));
+            if (distance < minDistance) {
+              overlapping = true;
+            }
+          }
+        });
+
+     
+        if (!overlapping) {
+          circle.style.left = `${newCircleX}px`;
+          circle.style.top = `${newCircleY}px`;
+        }
+      }
+    });
+  });
+
+ 
+  positionCircles();
+      </script>
+  </body>
+</html>
