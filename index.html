@@ -1,747 +1,502 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Professional Django backend developer with Meta Coursera certificates."
-    />
-    <title>My Personal Website - Django Backend Developer</title>
-    <!-- Bootstrap CSS -->
-    <link href="css.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Custom CSS -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Django backend developer with Meta Coursera certificates.">
+    <title>Omar Khushfi - Django Backend Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
-      body {
-        background-color: #1a1a1a;
-        color: #00ffffba;
-        font-family: "Poppins", sans-serif;
-      }
-
-      .navbar {
-        background-color: #111;
-      }
-
-      .navbar-brand,
-      .nav-link {
-        color: #00ffffba !important;
-      }
-
-      .hero {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        justify-content: center;
-        padding: 60px 20px;
-        background-color: #0d0d0d;
-        color: #fff;
-        text-align: center;
-      }
-
-      @media (min-width: 768px) {
-        .hero {
-          flex-direction: row;
-          text-align: left;
-          padding: 100px 40px;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
-      }
-
-      .hero-text h1 {
-        font-size: 2.5rem;
-        animation: fadeIn 2s;
-      }
-
-      @media (min-width: 768px) {
-        .hero-text h1 {
-          font-size: 3.5rem;
-        }
-      }
-
-      .hero-text p {
-        font-size: 1.125rem;
-        margin-top: 20px;
-        animation: fadeIn 3s;
-      }
-
-      .hero img {
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 400px;
-        max-height: 400px;
-        border-radius: 50%;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-        animation: slideIn 2s;
-        margin-bottom: 30px;
-      }
-      *,
-      ::after,
-      ::before {
-        box-sizing: border-box;
-      }
-
-     
-      @media (min-width: 768px) {
-        .hero img {
-          width: 300px;
-          height: 300px;
-          margin-bottom: 0;
-        }
-      }
-      
-
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideIn {
-        0% {
-          transform: translateX(-100px);
-          opacity: 0;
-        }
-        100% {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      .section-title {
-        text-align: center;
-        margin: 50px 0 30px;
-        font-size: 2.5rem;
-      }
-
-      .card:hover {
-        transform: scale(1.05);
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 4px 15px#00a7a7;
-      }
-
-      .project-card {
-        background-color: #262626;
-        border: none;
-        margin-bottom: 30px;
-        color: #fff;
-        transition: transform 0.3s ease-in-out,
-          background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        background-color: #333;
-        color: #00ffffba;
-        box-shadow: 0 4px 15px#00a7a7;
-      }
-
-      footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #0d0d0d;
-        color: #00ffffba;
-      }
-
-      .footer-links a {
-        color: #00ffffba;
-        text-decoration: none;
-        margin: 0 10px;
-      }
-
-      .footer-links a:hover {
-        color: #fff;
-        text-decoration: underline;
-      }
-
-      .btn-custom {
-        background-color: #00ffffba;
-        color: #000;
-        transition: background-color 0.3s ease;
-        margin-bottom: 50px;
-      }
-
-      .btn-custom:hover {
-        background-color: #00a7a7;
-        color: #fff;
-      }
-      .card-body {
-        padding: 10%;
-    padding-right: 15%;
-    padding-left: 15%;
-      }
-
-      /* Style for the certificates section */
-      .certificate-card {
-        background-color: #1e1e1e;
-        color: #fff;
-        border: none;
-        margin-bottom: 30px;
-        text-align: center;
-        padding: 20px;
-        transition: transform 0.3s ease-in-out,
-          background-color 0.3s ease-in-out;
-      }
-
-      .certificate-card:hover {
-        transform: translateY(-10px);
-        background-color: #333;
-        box-shadow: 0 4px 15px#00a7a7;
-      }
-
-      .certificate-card img {
-        width: 100px;
-        height: auto;
-        margin-bottom: 15px;
-      }
-
-      .carousel-indicators li {
-        width: 50px;
-        height: 8px;
-        margin: 0 5px;
-        background-color: #50000000 !important;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        border-radius: 4px;
-        position: relative;
-        font-size: larger !important;
-      }
-
-      .carousel-indicators .active {
-        background-color: #00ffffba;
-        color: #00ffffba !important ;
-        transform: scale(1.1);
-      }
-
-      .carousel-indicators li:hover {
-        background-color: #00a7a7;
-        cursor: pointer;
-      }
-
-      .carousel-indicators li::marker {
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 20px;
-        color: #00ffffba !important ;
-      }
-
-      /* Responsive Adjustments */
-      @media (max-width: 576px) {
-        .section-title {
-          font-size: 2rem;
-          margin: 30px 0 20px;
-        }
-        .carousel-indicators li::marker {
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 10px;
-        color: #00ffffba !important ;
-      }
-
-        .btn-custom {
-          width: 100%;
-        }
-      }
-
-      .circle {
-    width: 70vw; 
-    height: 70vw;
-    max-width: 700px; 
-    max-height: 700px;
-    border-radius: 50%;
-    border: 2px solid #00b4b4;
+            .pool {
+         margin: auto;
     position: relative;
+    width: 90%;
+    height: 46vh;
+    border-radius: 20px;
     overflow: hidden;
-    margin: 0 auto; 
-  }
-
-  .small-circle {
-    width: 10vw;
-    height: 10vw;
-    max-width: 70px;
-    max-height: 70px;
-    border-radius: 50%;
-    background-color: #333;
-    position: absolute;
-    color: #00ffff;
-    transition: left 0.5s, top 0.5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1vw;
-    font-weight: bold;
+    background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+    
+        }
+        .box {
+            display: flex;
     text-align: center;
-  }
+    position: absolute;
+    font-size: 100%;
+    font-weight: bold;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #007aff;
+    transition: top 0.5s ease, left 0.5s ease;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+        }
+          @media (max-width: 768px) {
+        .project-card {
+            height: 750px ! important; /* Increase height for small screens */
+        }
+        
+        
+         .box {
+            font-size: 75%;
 
-  .container-circle {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    margin: 29px;
-    margin-bottom: 70px;
-  }
-
- 
-  @media (max-width: 768px) {
-    .circle {
-      width: 90vw; 
-      height: 90vw; 
+    width: 50px;
+    height: 50px;
+   
+        }
+       
     }
-    .carousel-indicators li::marker {
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 10px;
-        color: #00ffffba !important ;
-      }
-
-    .small-circle {
-        width: 10vw;
-        height: 10vw;
-        font-size: 1.5vw;
-        font-weight: bold;
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+        .skill-circle {
+            transition: all 0.3s ease;
+        }
+        .skill-circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        .profile-image {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translatey(0px);
+            }
+            50% {
+                transform: translatey(-20px);
+            }
+            100% {
+                transform: translatey(0px);
+            }
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .bg-blur {
+            backdrop-filter: blur(10px);
+        }
+         .swiper-container {
+        overflow: hidden;
     }
-  }
 
-</style>
+  
+       
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #fff;
+        }
+        .project-card {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+     
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+         .swiper-container {
+        overflow: hidden;
+    }
+    .swiper-slide {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .swiper-slide-active {
+        opacity: 1;
+    }
+    .swiper-pagination {
+        position: static;
+        margin-top: 20px;
+    }
+    .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background: #e2e8f0;
+        opacity: 0.5;
+    }
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #3b82f6;
+    }
     </style>
-  </head>
-  <body>
+</head>
+<body class="bg-gray-900 text-gray-100">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand">omar khushfi</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About Me</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#certificates">Certificates</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-          </ul>
+    <nav class="bg-gray-800 bg-opacity-80 sticky top-0 z-50 bg-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="text-xl font-bold text-white text-glow">Omar Khushfi</a>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">About</a>
+                        <a href="#projects" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">Projects</a>
+                        <a href="#certificates" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">Certificates</a>
+                        <a href="#skills" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">Skills</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:bg-gray-700 hover:text-white px-2 py-1 rounded-md text-sm font-medium">
+                        Menu
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 bg-opacity-80 bg-blur">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#projects" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#certificates" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Certificates</a>
+                <a href="#skills" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Hi, I'm a Backend Developer</h1>
-        <p>
-          I am a student in the College of Applied Computer Technology. I am a back-end developer using Django and Django Rest Framework.
-        </p>
-       
-      </div>
-      <!-- Image placeholder -->
-      <img
-        src="omar.png"
-        alt="Personal Image"
-        style="width: 400px; height: 400px"
-      />
+    <section class="hero-gradient text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-glow">Hi, I'm a Backend Developer</h1>
+                <p class="text-xl mb-8">I am a student in the College of Applied Computer Technology, specializing in Django and Django Rest Framework.</p>
+                <a href="#projects" class="bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-blue-100 transition duration-300 inline-block hover:shadow-lg transform hover:scale-105">View My Work</a>
+            </div>
+            <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+                <img src="omar.png" alt="Omar Khushfi" class="rounded-full w-64 h-64 md:w-96 md:h-96 mx-auto border-4 border-white shadow-lg profile-image">
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="container">
-      <h2 class="section-title">About Me</h2>
-      <p>
-        I am a professional backend developer with Meta Coursera certificates in
-        Django and Django REST. I have participated in many software
-        competitions and have a Codeforces account. I have worked on numerous
-        projects and currently work as a freelancer.
-      </p>
-      <!-- Button to download CV -->
-      <a
-        href="path/to/your/cv.pdf"
-        class="btn btn-custom mt-3"
-        download="YourName_CV.pdf"
-        >Download My CV</a
-      >
+    <section id="about" class="py-20 animated-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center text-glow" data-aos="fade-up">About Me</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto text-center" data-aos="fade-up" data-aos-delay="200">
+                I am a professional backend developer with Meta Coursera certificates in Django and Django REST. I have participated in many software competitions and have a Codeforces account. I have worked on numerous projects and currently work as a freelancer.
+            </p>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                <a href="path/to/your/cv.pdf" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 inline-block hover:shadow-lg transform hover:scale-105" download="YourName_CV.pdf">Download My CV</a>
+            </div>
+        </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="container">
-      <h2 class="section-title">Projects</h2>
-      <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <ol class="carousel-indicators">
-            <li
-              data-bs-target="#projectCarousel"
-              data-bs-slide-to="0"
-              class="active"
-            ></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="2"></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="3"></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="4"></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="5"></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="6"></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="7"></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="8"></li>
-            <li data-bs-target="#projectCarousel" data-bs-slide-to="9"></li>
+<section id="projects" class="py-20">
+    <div class="container mx-auto px-4 overflow-hidden">
+        <h2 class="text-3xl font-bold mb-12 text-center text-glow" data-aos="fade-up">Projects</h2>
+        <div class="swiper-container" data-aos="fade-up">
+            <div class="swiper-wrapper">
+  <!-- Project 1 -->
+                <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h2 class="text-3xl font-bold mb-4">Calculate product price</h2>
+                                <p class="mb-4 text-xl">This site calculates the initial cost of products based on raw materials and their prices. It automatically updates product prices when raw material costs change.</p>
+                            </div>
+                            <a href="https://github.com/omar-khushfi/-2-Calculate_product_price-" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4"> Exam English words</h3>
+                                <p class="mb-4 text-xl"> The site helps to memorize English vocabulary, where the word is entered with its translation into Arabic,
+                                    and the site asks random questions from the words that the user has memorized, shows options, and
+                                    keeps the words that the user answered incorrectly, and shows them in a sidebar.</p>
+                            </div>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 3 -->
+                 <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4"> Questions and Exams</h3>
+                                <p class="mb-4 text-xl">    On this site there are two types of users: students and teachers. Each teacher can create a set of questions and the student can search for them, enter them, and conduct an exam at a specific time. The sets of questions appear on the teacher’s page and the results of previous exams appear on the student’s page.</p>
+                            </div>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 4 -->
+                 <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">Store</h3>
+                                <p class="mb-4 text-xl">    A store that includes creating an account for the user. The user browses and places purchases in his cart. He can modify and then pay. He can add and modify products.</p>
+                            </div>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 5 -->
+                 <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4"> Manage Projects</h3>
+                                <p class="mb-4 text-xl">  This site allows you to create accounts and log in. It manages rooms, where each room has tasks that can be added or its status modified without updating the page. Each room has a real-time conversation.
+                               
+                            </div>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 6 -->
+                 <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">tic tac toe</h3>
+                                <p class="mb-4 text-xl"> This site is for the XO game and allows the user to create accounts and log in, where each user can
+                                    create a private room and give the room name to his friend, and his friend searches for the room and
+                                    enters it, and when the number of people in the room reaches 2, no additional person is allowed to enter,</p>
+                            </div>
+                            <a href="https://github.com/omar-khushfi/-4-tic-tac-toe-" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 7 -->
+                 <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">Library management</h3>
+                                <p class="mb-4 text-xl"> This site is for managing a library for selling and renting books, where you can add, edit, and delete books,
+                                    display available, sold, and rented books, and display profits from rented and sold books.</p>
+                            </div>
+                            <a href="https://github.com/omar-khushfi/Library-management" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 8 -->
+                 <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">Api for restaurant </h3>
+                                <p class="mb-4 text-xl"> This project provides, through Abi, the creation of user accounts with a token that enables you to create meals and the foods that make up the meals. It is also possible to create meals and the foods that make up the meals and customer requests with calculating the price of the request.</p>
+                            </div>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 9 -->
+                 <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">restaurant</h3>
+                                <p class="mb-4 text-xl">  This site reviews restaurant specials and provides a description of each meal.
+                                </p>
+                            </div>
+                            <a href="https://github.com/omar-khushfi/a-store-django1" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 10 -->
+                 <div class="swiper-slide">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300 project-card mx-12">
+                        <div class="p-9 flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">Store Api</h3>
+                                <p class="mb-4 text-xl"> This site provides API for a store for sale, as it includes creating a user, modifying it, obtaining a token, creating products, modifying them, and displaying them with a filter and Paginator, creating requests, modifying them, and deleting them.</p>
+                            </div>
+                            <a href="https://github.com/omar-khushfi/6-store_api" class="text-blue-400 hover:text-blue-300 mt-auto">View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 
+            </div>
+            <!-- Add navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
             
-          </ol>
-          <!--project 1-->
-          <div class="carousel-item active">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">1. Calculate product price</h2>
-                <p class="card-text">
-                  This site enters the raw materials for manufacturing products and their price, then enters the products and enters the quantity of each raw material for this product, and then calculates the initial cost of the product. Any modification in the prices is sufficient to modify the price of the raw material to calculate the price of the new product automatically.
-                </p>
-                <a href="https://github.com/omar-khushfi/-2-Calculate_product_price-" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-          <!--project 2-->
-          <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">2. Store</h2>
-                <p class="card-text">
-                  A store that includes creating an account for the user. The user browses and places purchases in his cart. He can modify and then pay. He can add and modify products.
-                </p>
-                <a href="#" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-          <!--project 3-->
-          <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">3. Exam English words</h2>
-                <p class="card-text">
-                  The site helps to memorize English vocabulary, where the word is entered with its translation into Arabic,
-                  and the site asks random questions from the words that the user has memorized, shows options, and
-                  keeps the words that the user answered incorrectly, and shows them in a sidebar.
-                </p>
-                <a href="#" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-          <!--project 4-->
-          <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">4. Questions and Exams</h2>
-                <p class="card-text">
-                  On this site there are two types of users: students and teachers. Each teacher can create a set of questions and the student can search for them, enter them, and conduct an exam at a specific time. The sets of questions appear on the teacher’s page and the results of previous exams appear on the student’s page.
-
-
-                </p>
-                <a href="#" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-          <!--project 5-->
-          <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">5. Manage Projects</h2>
-                <p class="card-text">
-                  This site allows you to create accounts and log in. It manages rooms, where each room has tasks that can be added or its status modified without updating the page. Each room has a real-time conversation.
-                </p>
-                <a href="#" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-          <!--project 6-->
-          <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">6. tic tac toe</h2>
-                <p class="card-text">
-                  This site is for the XO game and allows the user to create accounts and log in, where each user can
-                  create a private room and give the room name to his friend, and his friend searches for the room and
-                  enters it, and when the number of people in the room reaches 2, no additional person is allowed to enter,
-                </p>
-                <a href="https://github.com/omar-khushfi/-4-tic-tac-toe-" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-          <!--project 7-->
-          <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">7. Library management</h2>
-                <p class="card-text">
-                  This site is for managing a library for selling and renting books, where you can add, edit, and delete books,
-                  display available, sold, and rented books, and display profits from rented and sold books.
-                </p>
-                <a href="https://github.com/omar-khushfi/Library-management" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-          <!--project 8-->
-          <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">8. Api for restaurant </h2>
-                <p class="card-text">
-                  This project provides, through Abi, the creation of user accounts with a token that enables you to create meals and the foods that make up the meals. It is also possible to create meals and the foods that make up the meals and customer requests with calculating the price of the request.
-                </p>
-                <a href="#" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-          <!--project 9-->
-          <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">9. Store Api</h2>
-                <p class="card-text">
-                  This site provides API for a store for sale, as it includes creating a user, modifying it, obtaining a token, creating products, modifying them, and displaying them with a filter and Paginator, creating requests, modifying them, and deleting them.
-
-
-                </p>
-                <a href="https://github.com/omar-khushfi/6-store_api" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-
-           <!--project 10-->
-           <div class="carousel-item">
-            <div class="card project-card">
-              <div class="card-body">
-                <h2 class="card-title">10. restaurant </h2>
-                <p class="card-text">
-                  This site reviews restaurant specials and provides a description of each meal.
-
-
-                </p>
-                <a href="https://github.com/omar-khushfi/a-store-django1" class="btn btn-custom"> Go to source code </a>
-              </div>
-            </div>
-          </div>
-
-          
+             <div class="swiper-pagination"></div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#projectCarousel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#projectCarousel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </section>
-
+    </div>
+</section>
     <!-- Certificates Section -->
-    <section id="certificates" class="container">
-      <h2 class="section-title">Certificates</h2>
-      <div class="row">
-        <!-- Certificate 1 -->
+    <section id="certificates" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-glow" data-aos="fade-up">Certificates</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+               <!-- Certificate 1 -->
+                <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300" data-aos="zoom-in" data-aos-delay="100">
+                    <a href="django.png" target="_blank" class="block hover-scale">
+                        <img src="django.png" alt="Meta Django" class="w-full h-48 object-contain mt-4">
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Meta Django</h3>
+                        <p>Certificate from Coursera for completing the Meta Django specialization.</p>
+                    </div>
+                </div>
+                <!-- Certificate 2 -->
+                <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300" data-aos="zoom-in" data-aos-delay="200">
+                    <a href="rest.png" target="_blank" class="block hover-scale">
+                        <img src="rest.png" alt="Meta Django RestFramework" class="w-full h-48 object-contain mt-4">
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Meta Django RestFramework</h3>
+                        <p>Certificate from Coursera for completing the Meta APIs specialization.</p>
+                    </div>
+                </div>
 
-        <div class="col-md-4">
-          <div class="card certificate-card w-100">
-            <img src="django.png" alt="Certificate Logo" class="w-100" />
-            <h5 class="card-title">Meta Django</h5>
-            <p class="card-text">
-              Certificate from Coursera for completing the Meta Django
-              specialization.
-            </p>
-          </div>
-        </div>
-        <!-- Certificate 2 -->
-        <div class="col-md-4">
-          <div class="card certificate-card w-100">
-            <img src="rest.png" alt="Certificate Logo" class="w-100" />
-            <h5 class="card-title">Meta Django RestFrameWork</h5>
-            <p class="card-text">
-              Certificate from Coursera for completing the Meta APIs
-              specialization.
-            </p>
-          </div>
-        </div>
-        <!-- Certificate 3 -->
-        <div class="col-md-4">
-          <div class="card certificate-card w-100">
-            <img src="full.png" alt="Certificate Logo" class="w-100" />
-            <h5 class="card-title">Meta FullStuck</h5>
-            <p class="card-text">
-              Certificate from Coursera for completing the Meta FullStuck
-              specialization.
-            </p>
-          </div>
-        </div>
-        <!-- Certificate 4 -->
-        <div class="col-md-4">
-          <div class="card certificate-card w-100">
-            <img src="icpc22.png" alt="Certificate Logo" class="w-100" />
-            <h5 class="card-title">Icpc 2022</h5>
-            <p class="card-text">
-              Certificate from Coursera for completing the Meta Django
-              specialization.
-            </p>
-          </div>
-        </div>
-        <!-- Certificate 5 -->
-        <div class="col-md-4">
-          <div class="card certificate-card w-100">
-            <img src="icpc23.png" alt="Certificate Logo" class="w-100" />
-            <h5 class="card-title">Icpc 2023</h5>
-            <p class="card-text">
-              Certificate from Coursera for completing the Meta Django
-              specialization.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Skils Section -->
-    <section id="skills" id="skills">
-        <h2 class="section-title">Skils</h2>
-        <div class="container-circle">
-            <div class="circle" id="mainCircle">
-                <div class="small-circle" id="circle1">Sql</div>
-                <div class="small-circle" id="circle2">Django</div>
-                <div class="small-circle" id="circle3">C#</div>
-                <div class="small-circle" id="circle3">Html</div>
-                <div class="small-circle" id="circle3">Css</div>
-                <div class="small-circle" id="circle4">GitHub</div>
-                <div class="small-circle" id="circle4">Python</div>
-                <div class="small-circle" id="circle4">Linux</div>
-                <div class="small-circle" id="circle4">Problem Solving</div>
-                <div class="small-circle" id="circle4">Rest</div>
-                <div class="small-circle" id="circle4">Js</div>
-               
+                <!-- Certificate 3 -->
+                <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300" data-aos="zoom-in" data-aos-delay="200">
+                    <a href="rest.png" target="_blank" class="block hover-scale">
+                        <img src="full.png" alt="Meta Django RestFramework" class="w-full h-48 object-contain mt-4">
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Meta FullStuck</h3>
+                        <p>Certificate from Coursera for completing the Meta APIs specialization.</p>
+                    </div>
+                </div>
+                
+                <!-- Certificate 4 -->
+                <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300" data-aos="zoom-in" data-aos-delay="200">
+                    <a href="rest.png" target="_blank" class="block hover-scale">
+                        <img src="icpc22.png" alt="Meta Django RestFramework" class="w-full h-48 object-contain mt-4">
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Icpc 2022</h3>
+                        <p>Certificate from Coursera for completing the Meta Django
+                            specialization.</p>
+                    </div>
+                </div>
+                
+                <!-- Certificate 5 -->
+                <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg card-hover transition duration-300" data-aos="zoom-in" data-aos-delay="200">
+                    <a href="rest.png" target="_blank" class="block hover-scale">
+                        <img src="icpc23.png" alt="Meta Django RestFramework" class="w-full h-48 object-contain mt-4">
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Icpc 2023</h3>
+                        <p>Certificate from Coursera for completing the Meta Django
+                            specialization.</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
-      </section>
+    </section>
+
+    <!-- Skills Section -->
+   <section id="skills" class="py-20">
+    <h2 class="text-3xl font-bold mb-12 text-center text-glow" data-aos="fade-up">Skills</h2>
+        <div class="pool" id="pool">
+        <!-- Boxes will be created by JavaScript -->
+    </div>
+    </section>
+
     <!-- Footer -->
-    <footer>
-      <p>© 2024 My Personal Website. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/omar-khushfi-364384263/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/omar-khushfi" target="_blank">GitHub</a>
-        <a href="https://codeforces.com/profile/omar-khushfi" target="_blank">Codeforces</a>
-      </div>
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">© 2024 Omar Khushfi. All rights reserved.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://www.linkedin.com/in/omar-khushfi-364384263/" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300">LinkedIn</a>
+                <a href="https://github.com/omar-khushfi" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300">GitHub</a>
+                <a href="https://codeforces.com/profile/omar-khushfi" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300">Codeforces</a>
+            </div>
+        </div>
     </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-     const smallCircles = document.querySelectorAll('.small-circle');
-  const mainCircle = document.getElementById('mainCircle');
-
-  
-  function positionCircles() {
-    const rect = mainCircle.getBoundingClientRect();
-    const centerX = rect.width / 2; 
-    const centerY = rect.height / 2; 
-
-    smallCircles.forEach((circle, index) => {
-      let angle = Math.random() * 2 * Math.PI; 
-      let radius = Math.random() * (rect.width / 2 - circle.clientWidth / 2); 
- 
-      let circleX = centerX + radius * Math.cos(angle) - circle.clientWidth / 2;
-      let circleY = centerY + radius * Math.sin(angle) - circle.clientHeight / 2;
-
-     
-      for (let j = 0; j < index; j++) {
-        const otherCircle = smallCircles[j];
-        const otherX = parseFloat(otherCircle.style.left) || 0;
-        const otherY = parseFloat(otherCircle.style.top) || 0;
-
-        const distance = Math.sqrt(Math.pow(circleX - otherX, 2) + Math.pow(circleY - otherY, 2));
-        const minDistance = circle.clientWidth + otherCircle.clientWidth;
-
-        if (distance < minDistance) {
-        
-          circleX += (minDistance - distance) * (circleX - otherX) / distance;
-          circleY += (minDistance - distance) * (circleY - otherY) / distance;
-        }
-      }
-
-      circle.style.left = `${circleX}px`;
-      circle.style.top = `${circleY}px`;
-    });
-  }
-
-  mainCircle.addEventListener('mousemove', (event) => {
-    const rect = mainCircle.getBoundingClientRect();
-    const mouseX = event.clientX - rect.left;
-    const mouseY = event.clientY - rect.top; 
-
-    smallCircles.forEach(circle => {
-      const circleX = parseFloat(circle.style.left) + circle.clientWidth / 2;
-      const circleY = parseFloat(circle.style.top) + circle.clientHeight / 2;
-
-      const distance = Math.sqrt(Math.pow(mouseX - circleX, 2) + Math.pow(mouseY - circleY, 2));
-      if (distance < 200) { 
-        const angle = Math.random() * 2 * Math.PI;
-        const radius = Math.random() * (rect.width / 2 - circle.clientWidth / 2); 
-
-    
-        const newCircleX = (rect.width / 2) + radius * Math.cos(angle) - circle.clientWidth / 2;
-        const newCircleY = (rect.height / 2) + radius * Math.sin(angle) - circle.clientHeight / 2;
-
-       
-        let overlapping = false;
-        smallCircles.forEach(otherCircle => {
-          if (otherCircle !== circle) {
-            const otherX = parseFloat(otherCircle.style.left) || 0;
-            const otherY = parseFloat(otherCircle.style.top) || 0;
-            const minDistance = circle.clientWidth + otherCircle.clientWidth;
-            const distance = Math.sqrt(Math.pow(newCircleX - otherX, 2) + Math.pow(newCircleY - otherY, 2));
-            if (distance < minDistance) {
-              overlapping = true;
-            }
-          }
+        AOS.init({
+            duration: 1000,
+            once: true,
+            mirror: false
         });
 
-     
-        if (!overlapping) {
-          circle.style.left = `${newCircleX}px`;
-          circle.style.top = `${newCircleY}px`;
-        }
-      }
-    });
-  });
 
- 
-  positionCircles();
-      </script>
-  </body>
+      new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        }
+    });
+    
+       // Generate random number within a range
+        function randomPosition(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Create multiple boxes in the pool
+        function createBoxes() {
+            const pool = document.getElementById('pool');
+            let sk=['Django','Python','c++','c#','html','css','Rest','Sql','Github','linux']
+            for (let i = 0; i < 10; i++) {
+                const box = document.createElement('div');
+                box.classList.add('box');
+                box.innerHTML = sk[i];
+                box.style.top = randomPosition(0, pool.offsetHeight - 50) + 'px';
+                box.style.left = randomPosition(0, pool.offsetWidth - 50) + 'px';
+
+                // Add mouseover event to each box
+                box.addEventListener('mouseover', function() {
+                    const newTop = randomPosition(0, pool.offsetHeight - 50);
+                    const newLeft = randomPosition(0, pool.offsetWidth - 50);
+                    box.style.top = newTop + 'px';
+                    box.style.left = newLeft + 'px';
+                    box.style.transform = `(${randomPosition(1, 2)}) rotate(${randomPosition(0, 360)}deg)`;
+                });
+
+                pool.appendChild(box);
+            }
+        }
+
+        // Initialize boxes on page load
+        window.onload = createBoxes;
+    </script>
+</body>
 </html>
