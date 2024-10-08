@@ -17,13 +17,23 @@
             background-color: #0f172a;
             color: #e2e8f0;
         }
-        .codeforces{
+
+        .logos--google-gmail {
+            display: inline-block;
+            width: 2.33em;
+            height: 2em;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 193'%3E%3Cpath fill='%234285f4' d='M58.182 192.05V93.14L27.507 65.077L0 49.504v125.091c0 9.658 7.825 17.455 17.455 17.455z'/%3E%3Cpath fill='%2334a853' d='M197.818 192.05h40.727c9.659 0 17.455-7.826 17.455-17.455V49.505l-31.156 17.837l-27.026 25.798z'/%3E%3Cpath fill='%23ea4335' d='m58.182 93.14l-4.174-38.647l4.174-36.989L128 69.868l69.818-52.364l4.669 34.992l-4.669 40.644L128 145.504z'/%3E%3Cpath fill='%23fbbc04' d='M197.818 17.504V93.14L256 49.504V26.231c0-21.585-24.64-33.89-41.89-20.945z'/%3E%3Cpath fill='%23c5221f' d='m0 49.504l26.759 20.07L58.182 93.14V17.504L41.89 5.286C24.61-7.66 0 4.646 0 26.23z'/%3E%3C/svg%3E");
+        }
+
+        .codeforces {
             padding-top: 2px;
-    border-radius: 5px;
-    width: 30px;
-    height: 32px;
-}
-        
+            border-radius: 5px;
+            width: 30px;
+            height: 32px;
+        }
+
 
         .pool {
             margin: auto;
@@ -55,7 +65,7 @@
         @media (max-width: 768px) {
             .project-card {
                 height: 750px ! important;
-                /* Increase height for small screens */
+               
             }
 
 
@@ -257,9 +267,9 @@
                 projects and currently work as a freelancer.
             </p>
             <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                <a href="path/to/your/cv.pdf"
+                <a href="cv.pdf"
                     class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 inline-block hover:shadow-lg transform hover:scale-105"
-                    download="YourName_CV.pdf">Download My CV</a>
+                    download="omar-khushfi-cv.pdf">Download My CV</a>
             </div>
         </div>
     </section>
@@ -522,7 +532,7 @@
     <section id="skills" class="py-20">
         <h2 class="text-3xl font-bold mb-12 text-center text-glow" data-aos="fade-up">Skills</h2>
         <div class="pool" id="pool">
-            <!-- Boxes will be created by JavaScript -->
+          
         </div>
     </section>
 
@@ -534,12 +544,15 @@
                 <a href="https://www.linkedin.com/in/omar-khushfi-364384263/" target="_blank"
                     class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fa fa-linkedin-square"
                         style="font-size:36px"></i></a>
-
+                <a href="https://mail.google.com/mail/u/0/#inbox?compose=jrjtXPWHtfJPjlGHFQxFGvDccCGjjjMdfrWhTRkLBTpBMSVHdzscwrRJdQpkNKqGlsVLSBrQ" target="_blank"
+                    class="text-blue-400 hover:text-blue-300 transition duration-300"><span
+                        class="logos--google-gmail"></span></a>
                 <a href="https://github.com/omar-khushfi" target="_blank"
                     class="text-blue-400 hover:text-blue-300 transition duration-300"><i class="fa fa-github-square"
                         style="font-size:36px;color: black;"></i></a>
                 <a href="https://codeforces.com/profile/omar-khushfi" target="_blank"
-                    class="text-blue-400 hover:text-blue-300 transition duration-300"><img class="codeforces" src="codeforces.png"></a>
+                    class="text-blue-400 hover:text-blue-300 transition duration-300"><img class="codeforces"
+                        src="codeforces.png"></a>
             </div>
         </div>
     </footer>
@@ -571,12 +584,12 @@
             }
         });
 
-        // Generate random number within a range
+       
         function randomPosition(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        // Create multiple boxes in the pool
+     
         function createBoxes() {
             const pool = document.getElementById('pool');
             let sk = ['Django', 'Python', 'c++', 'c#', 'html', 'css', 'Rest', 'Sql', 'Github', 'linux']
@@ -587,7 +600,7 @@
                 box.style.top = randomPosition(0, pool.offsetHeight - 50) + 'px';
                 box.style.left = randomPosition(0, pool.offsetWidth - 50) + 'px';
 
-                // Add mouseover event to each box
+              
                 box.addEventListener('mouseover', function () {
                     const newTop = randomPosition(0, pool.offsetHeight - 50);
                     const newLeft = randomPosition(0, pool.offsetWidth - 50);
@@ -600,7 +613,7 @@
             }
         }
 
-        // Initialize boxes on page load
+       
         window.onload = createBoxes;
     </script>
 </body>
